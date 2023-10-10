@@ -1,0 +1,70 @@
+<form [formGroup]="contratoForm" (ngSubmit)="onSubmit()">
+    <mat-card class="Formtrabajador-card">
+      <mat-card-header>
+        <mat-card-title>Servicio</mat-card-title>
+        <mat-card-subtitle>Datos</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="principal">
+          <div class="row" >
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Codigo" formControlName="CodContrato" >
+                <mat-error *ngIf="contratoForm.controls['CodContrato'].hasError('required')"><Strong>El Codigo es requerido</Strong></mat-error>
+              <mat-error *ngIf="contratoForm.controls['CodContrato'].hasError('maxlength')"><Strong>El tamaño máximo es 11</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Fecha Inicio" formControlName="FechaInicioContr" >
+                <mat-error *ngIf="contratoForm.controls['FechaInicioContr'].hasError('required')"><Strong>La fecha es requerida</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Fecha Final" formControlName="FechaFinalContr" >
+                <mat-error *ngIf="contratoForm.controls['FechaFinalContr'].hasError('required')"><Strong>La fecha es requerida</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Servicio" formControlName="CodSer" >
+                <mat-error *ngIf="contratoForm.controls['CodSer'].hasError('required')"><Strong>El servicio es requerido</Strong></mat-error>
+              <mat-error *ngIf="contratoForm.controls['CodSer'].hasError('maxlength')"><Strong>El tamaño máximo es 11</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Nit Predio" formControlName="NitPredio" >
+                <mat-error *ngIf="contratoForm.controls['NitPredio'].hasError('required')"><Strong>El NIT es requerido</Strong></mat-error>
+              <mat-error *ngIf="contratoForm.controls['NitPredio'].hasError('maxlength')"><Strong>El tamaño máximo es 11</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Precio" formControlName="PrecioContrato" >
+                <mat-error *ngIf="contratoForm.controls['PrecioContrato'].hasError('required')"><Strong>El precio es requerido</Strong></mat-error>
+                <mat-error *ngIf="contratoForm.controls['PrecioContrato'].hasError('maxlength')"><Strong>El tamaño maximo es 11</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+      </mat-card-content>
+      <mat-card-actions class="segundo">
+        <button mat-button class="button" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>

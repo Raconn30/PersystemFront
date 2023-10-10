@@ -8,12 +8,14 @@ export class RestService {
 
   constructor(public api: HttpClient) { }
 
-  url = "https://localhost:7241/api/";
+  url = "https://localhost:7172/api/";
 
   public async Get(controller:string){
-    await this.api.get(this.url+controller).toPromise().then((res)=>{
-      console.log(res);
-    });
+    var result:any
+    await this.api.get(this.url+controller).toPromise().then(x=>{
+      result=x;
+    })
+    return result;
   }
 
   public async Post(controller:string, object:any){

@@ -1,0 +1,68 @@
+<form [formGroup]="predioForm" (ngSubmit)="onSubmit()">
+    <mat-card class="Formtrabajador-card">
+      <mat-card-header>
+        <mat-card-title>Servicio</mat-card-title>
+        <mat-card-subtitle>Datos</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="principal">
+          <div class="row" >
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Nit" formControlName="NitPredio" >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Nombre" formControlName="NomPredio" >
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Cuartos" formControlName="CuartosPredio" >
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Tipo de Cuarto" formControlName="TipoCuarto" >
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Dirección" formControlName="DirPredio" >
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Correo" formControlName="CorreoPredio" >
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Documento" formControlName="DocumentoRepre" >
+              </mat-form-field>
+            </div>
+          </div>
+  
+      </mat-card-content>
+      <mat-card-actions class="segundo">
+        <button mat-button class="button" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>

@@ -8,6 +8,10 @@ import { RepresentanteComponent } from './Components/representante/representante
 import { ServicioComponent } from './Components/servicio/servicio.component';
 import { TrabajadorComponent } from './Components/trabajador/trabajador.component';
 import { LoginComponent } from './Components/login/login.component';
+import { FormloginComponent } from './Components/Form/formlogin/formlogin.component';
+import { FormcontratoComponent } from './Components/Form/formcontrato/formcontrato.component';
+import { FormmaterialComponent } from './Components/Form/formmaterial/formmaterial.component';
+import { FormpredioComponent } from './Components/Form/formpredio/formpredio.component';
 
 const routes: Routes = [
   {path:"contrato", component:ContratoComponent},
@@ -17,7 +21,11 @@ const routes: Routes = [
   {path:"representante", component:RepresentanteComponent},
   {path:"servicio", component:ServicioComponent},
   {path:"trabajador", component:TrabajadorComponent},
-  {path:"login", component:LoginComponent}
+  {path:"login", component:LoginComponent},
+  {path:"formularioLogin", component:FormloginComponent},
+  {path:"formularioContrato", component:FormcontratoComponent},
+  {path:"formularioMaterial", component:FormmaterialComponent},
+  {path:"formularioPredio", component:FormpredioComponent}
 ];
 
 @NgModule({

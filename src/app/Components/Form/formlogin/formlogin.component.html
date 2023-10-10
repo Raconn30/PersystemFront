@@ -1,0 +1,50 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-card class="Formtrabajador-card">
+      <mat-card-header>
+        <mat-card-title>Servicio</mat-card-title>
+        <mat-card-subtitle>Datos</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="principal">
+          <div class="row" >
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Codigo" formControlName="CodUsuario" >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Usuario" formControlName="Usuario" >
+                <mat-error *ngIf="loginForm.controls['Usuario'].hasError('required')"><Strong>El nombre es requerido</Strong></mat-error>
+                <mat-error *ngIf="loginForm.controls['Usuario'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Contraseña" formControlName="Contraseña" >
+                <mat-error *ngIf="loginForm.controls['Contraseña'].hasError('required')"><Strong>La contraseña es requerido</Strong></mat-error>
+                <mat-error *ngIf="loginForm.controls['Contraseña'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Cedula" formControlName="Cedula_Trab" >
+                <mat-error *ngIf="loginForm.controls['Cedula_Trab'].hasError('required')"><Strong>La cedula es requerido</Strong></mat-error>
+                <mat-error *ngIf="loginForm.controls['Cedula_Trab'].hasError('maxlength')"><Strong>Maximo 10 caracteres</Strong></mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+  
+      </mat-card-content>
+      <mat-card-actions class="segundo">
+        <button mat-button class="button" type="submit">Submit</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>

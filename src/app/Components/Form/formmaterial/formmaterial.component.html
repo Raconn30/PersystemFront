@@ -1,0 +1,60 @@
+<form [formGroup]="materialForm" (ngSubmit)="onSubmit()">
+  <mat-card class="Formtrabajador-card">
+    <mat-card-header>
+      <mat-card-title>Servicio</mat-card-title>
+      <mat-card-subtitle>Datos</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="principal">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Codigo" formControlName="CodMat">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nombre" formControlName="NomMat">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tipo" formControlName="TipoMat">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Descripción" formControlName="DesMat" cols="30" rows="10"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Precio" formControlName="PrecioMat">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Unidades" formControlName="NumUnidades">
+          </mat-form-field>
+        </div>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions class="segundo">
+      <button mat-button class="button" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

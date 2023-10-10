@@ -19,6 +19,18 @@ import { RepresentanteComponent } from './Components/representante/representante
 import { ServicioComponent } from './Components/servicio/servicio.component';
 import { TrabajadorComponent } from './Components/trabajador/trabajador.component';
 import { LoginComponent } from './Components/login/login.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {FormcontratoComponent } from './Components/Form/formcontrato/formcontrato.component';
+import {FormloginComponent } from './Components/Form/formlogin/formlogin.component';
+import { FormmaterialComponent } from './Components/Form/formmaterial/formmaterial.component';
+import { FormpredioComponent } from './Components/Form/formpredio/formpredio.component';
 
 
 @NgModule({
@@ -32,7 +44,11 @@ import { LoginComponent } from './Components/login/login.component';
     RepresentanteComponent,
     ServicioComponent,
     TrabajadorComponent,
-    LoginComponent
+    LoginComponent,
+    FormcontratoComponent,
+    FormloginComponent,
+    FormmaterialComponent,
+    FormpredioComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +60,15 @@ import { LoginComponent } from './Components/login/login.component';
     MatIconModule,
     MatListModule,
     AvatarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    FormsModule,
+    MatCardModule,
+    MatSortModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
