@@ -93,11 +93,19 @@ export class ContratoComponent implements OnInit, AfterViewInit {
     });
   }
 
+<<<<<<< HEAD
   public put() {
     this.api.Put("contrato", {
       codContrato: "",
     });
   }
+=======
+  // public put(){
+  //   this.api.Put("contrato", {
+  //   codContrato: "",
+  //   });
+  // }
+>>>>>>> 3209f74133ab8e1546a1edc47535e7581801afdb
 
   public delete() {
     this.api.Delete("contrato", {

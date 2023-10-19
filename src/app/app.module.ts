@@ -25,6 +25,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
+<<<<<<< HEAD
 import {ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {FormcontratoComponent } from './Components/Form/formcontrato/formcontrato.component';
@@ -33,6 +34,16 @@ import {FormmaterialComponent } from './Components/Form/formmaterial/formmateria
 import {FormpredioComponent } from './Components/Form/formpredio/formpredio.component';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+=======
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+import { FormproveedorComponent } from './Components/Forms/formproveedor/formproveedor.component';
+import { FormservicioComponent } from './Components/Forms/formservicio/formservicio.component';
+import { FormrepresentanteComponent } from './Components/Forms/formrepresentante/formrepresentante.component';
+import { FormtrabajadorComponent } from './Components/Forms/formtrabajador/formtrabajador.component';
+>>>>>>> 3209f74133ab8e1546a1edc47535e7581801afdb
 
 @NgModule({
   declarations: [
@@ -46,12 +57,28 @@ import {MatDialogModule} from '@angular/material/dialog';
     ServicioComponent,
     TrabajadorComponent,
     LoginComponent,
+<<<<<<< HEAD
     FormcontratoComponent,
     FormloginComponent,
     FormmaterialComponent,
     FormpredioComponent,
+=======
+    FormproveedorComponent,
+    FormservicioComponent,
+    FormrepresentanteComponent,
+    FormtrabajadorComponent
+>>>>>>> 3209f74133ab8e1546a1edc47535e7581801afdb
   ],
   imports: [
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

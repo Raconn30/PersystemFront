@@ -1,0 +1,54 @@
+<form [formGroup]="proveedorFrom" (ngSubmit)="onSubmit()">
+  <div class="Formulario">
+  <mat-card class="FormProveedor-card">
+    <mat-card-header>
+      <mat-card-title class="titu">Proovedor</mat-card-title>
+      <mat-card-subtitle class="Sub">Datos</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="principal">
+
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Codigo Proovedor" formControlName="cod_proovedor" >
+              <mat-error *ngIf="proveedorFrom.controls['cod_proovedor'].hasError('required')"><Strong>Codigo de Proovedor requerido</Strong></mat-error>
+              <mat-error *ngIf="proveedorFrom.controls['cod_proovedor'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre Proovedor " formControlName="nom_proovedor" >
+              <mat-error *ngIf="proveedorFrom.controls['nom_proovedor'].hasError('required')"><Strong>El nombre del Proovedor es requerido</Strong></mat-error>
+              <mat-error *ngIf="proveedorFrom.controls['nom_proovedor'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Direccion Proovedor " formControlName="dir_proovedor" >
+              <mat-error *ngIf="proveedorFrom.controls['dir_proovedor'].hasError('required')"><Strong>La direccion del Proovedor es requerida</Strong></mat-error>
+              <mat-error *ngIf="proveedorFrom.controls['dir_proovedor'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Telefono Proovedor " formControlName="tel_proovedor" >
+              <mat-error *ngIf="proveedorFrom.controls['tel_proovedor'].hasError('required')"><Strong>El telefono del Proovedor es requerido</Strong></mat-error>
+              <mat-error *ngIf="proveedorFrom.controls['tel_proovedor'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+
+    </mat-card-content>
+    <mat-card-actions class="segundo">
+      <button mat-button class="button"  type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</form>
