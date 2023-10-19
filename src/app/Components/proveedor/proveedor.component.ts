@@ -4,7 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/Services/rest.service';
-import { FormproveedorComponent } from '../Forms/formproveedor/formproveedor.component';
+import { FormproveedorComponent } from '../Form/formproveedor/formproveedor.component';
 
 @Component({
   selector: 'app-proveedor',

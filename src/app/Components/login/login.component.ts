@@ -92,17 +92,17 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
 
-  public put() {
+  // public put() {
 
-    this.api.Put("proveedor/",
-      {
-        codProveedor: "string",
-        nomProveedor: "string",
-        dirProveedor: "string",
-        telProveedor: "string"
-      });
+  //   this.api.Put("proveedor/",
+  //     {
+  //       codProveedor: "string",
+  //       nomProveedor: "string",
+  //       dirProveedor: "string",
+  //       telProveedor: "string"
+  //     });
 
-  }
+  // }
 
   public delete(): void {
 
