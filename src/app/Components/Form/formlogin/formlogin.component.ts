@@ -9,23 +9,32 @@ import Swal from 'sweetalert2';
 })
 export class FormloginComponent {
 
+  constructor(private ft: FormBuilder) {
+  }
+
+  /*
   loginForm = new FormGroup({
     CodUsuario: new FormControl(null),
     Usuario: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(25)])),
     Contraseña: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(25)])),
     Cedula_Trab: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(10)])),
   });
+  */
 
+  loginForm = this.ft.group ({
+    //CodUsuario: [null, Validators.required],
+    Usuario: [null, Validators.compose([Validators.required, Validators.maxLength(25)])],
+    Contraseña: [null, Validators.compose([Validators.required, Validators.maxLength(25)])],
+    Cedula_Trab: [null, Validators.compose([Validators.required, Validators.maxLength(10)])],
+  })
   
   //servicioFrom = this.ft;
 
-  constructor(private ft: FormBuilder) {
-  }
-
-  onSubmit(): void {
+  onSubmit(): void{
     Swal.fire(
       'Buen trabajo!',
-      'diste click al boton',
+      'Formulario enviado!',
+      'success'
     )
-  }
+   }
 }

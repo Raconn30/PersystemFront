@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class FormpredioComponent {
 
+  /*
   predioForm = new FormGroup({
     NitPredio: new FormControl(null),
     NomPredio: new FormControl(null),
@@ -18,16 +19,27 @@ export class FormpredioComponent {
     CorreoPredio: new FormControl(null),
     DocumentoRepre: new FormControl(null)
   });
+  */
 
   constructor(private ft: FormBuilder) {
   }
 
-  onSubmit(): void {
+  predioForm = this.ft.group({
+    NitPredio: [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
+    NomPredio: [null, Validators.compose([Validators.required, Validators.maxLength(45)])],
+    CuartosPredio: [null, Validators.required],
+    TipoCuarto: [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
+    DirPredio: [null, Validators.compose([Validators.required, Validators.maxLength(30)])],
+    CorreoPredio: [null, Validators.compose([Validators.required, Validators.email])],
+    DocumentoRepre: [null, Validators.compose([Validators.required, Validators.maxLength(15)])]
+  })
+
+  onSubmit(): void{
     Swal.fire(
       'Buen trabajo!',
-      'diste click al boton',
+      'Formulario enviado!',
+      'success'
     )
-  }
-
+   }
 
 }

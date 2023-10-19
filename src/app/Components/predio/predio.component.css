@@ -1,16 +1,30 @@
 table {
-    width: 100%;
-  }
-  
-  .mat-mdc-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
-  
-  td, th {
-    width: 25%;
-  }
-  .opcion{
-    padding: 5px;
-    cursor: pointer;
-  }
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  width: 25%;
+}
+
+.opcion {
+  padding: 5px;
+  cursor: pointer;
+}
+
+#opcion1 {
+  color: rgb(202, 51, 51);
+}
+
+.boton {
+  display: grid;
+  grid: repeat(1, 100%) / auto-flow 40%;
+  margin-bottom: 1%;
+  background-color: rgba(66, 67, 67, 255);
+  padding: 2%;
+}

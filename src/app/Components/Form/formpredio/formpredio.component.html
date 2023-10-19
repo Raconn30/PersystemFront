@@ -1,68 +1,76 @@
 <form [formGroup]="predioForm" (ngSubmit)="onSubmit()">
+  <div class="formulario">
     <mat-card class="Formtrabajador-card">
       <mat-card-header>
-        <mat-card-title>Servicio</mat-card-title>
+        <mat-card-title class="titu">Predio</mat-card-title>
         <mat-card-subtitle>Datos</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content class="principal">
-          <div class="row" >
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Nit" formControlName="NitPredio" >
-              </mat-form-field>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Nombre" formControlName="NomPredio" >
-              </mat-form-field>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Cuartos" formControlName="CuartosPredio" >
-              </mat-form-field>
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Tipo de Cuarto" formControlName="TipoCuarto" >
-              </mat-form-field>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Dirección" formControlName="DirPredio" >
-              </mat-form-field>
-            </div>
-          </div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nit" formControlName="NitPredio">
+          <mat-error *ngIf="predioForm.controls['NitPredio'].hasError('required')"><Strong>El NIT es
+              requerido</Strong></mat-error>
+          <mat-error *ngIf="predioForm.controls['NitPredio'].hasError('maxlength')"><Strong>Maximo 11
+              caracteres</Strong></mat-error>
+        </mat-form-field>
 
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Correo" formControlName="CorreoPredio" >
-              </mat-form-field>
-            </div>
-          </div>
 
-          <div class="row">
-            <div class="col">
-              <mat-form-field class="full-width">
-                <input matInput placeholder="Documento" formControlName="DocumentoRepre" >
-              </mat-form-field>
-            </div>
-          </div>
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Nombre" formControlName="NomPredio">
+          <mat-error *ngIf="predioForm.controls['NomPredio'].hasError('required')"><Strong>El Nombre es
+              requerido</Strong></mat-error>
+          <mat-error *ngIf="predioForm.controls['NomPredio'].hasError('maxlength')"><Strong>Maximo 11
+              caracteres</Strong></mat-error>
+        </mat-form-field>
+
+        <div class="div1">
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Cuartos" formControlName="CuartosPredio">
+            <mat-error *ngIf="predioForm.controls['CuartosPredio'].hasError('required')"><Strong>El cuarto es
+                requerido</Strong></mat-error>
+          </mat-form-field>
   
+  
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Tipo de Cuarto" formControlName="TipoCuarto">
+            <mat-error *ngIf="predioForm.controls['TipoCuarto'].hasError('required')"><Strong>El tipo de cuarto es
+                requerido</Strong></mat-error>
+            <mat-error *ngIf="predioForm.controls['TipoCuarto'].hasError('maxlength')"><Strong>Maximo 11
+                caracteres</Strong></mat-error>
+          </mat-form-field>
+  
+        </div>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Dirección" formControlName="DirPredio">
+          <mat-error *ngIf="predioForm.controls['DirPredio'].hasError('required')"><Strong>La dirección es
+              requerida</Strong></mat-error>
+          <mat-error *ngIf="predioForm.controls['DirPredio'].hasError('maxlength')"><Strong>Maximo 11
+              caracteres</Strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Correo" formControlName="CorreoPredio">
+          <mat-error *ngIf="predioForm.controls['CorreoPredio'].hasError('required')"><Strong>El correo es
+              requerido</Strong></mat-error>
+          <mat-error *ngIf="predioForm.controls['CorreoPredio'].hasError('email')"><Strong>La sintaxis debe ser de
+              correo</Strong></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Documento del representante" formControlName="DocumentoRepre">
+          <mat-error *ngIf="predioForm.controls['DocumentoRepre'].hasError('required')"><Strong>El documento es
+              requerido</Strong></mat-error>
+          <mat-error *ngIf="predioForm.controls['DocumentoRepre'].hasError('maxlength')"><Strong>Maximo 11
+              caracteres</Strong></mat-error>
+        </mat-form-field>
+
       </mat-card-content>
       <mat-card-actions class="segundo">
-        <button mat-button class="button" type="submit">Submit</button>
+        <button mat-button class="button" type="submit">Enviar</button>
       </mat-card-actions>
     </mat-card>
-  </form>
+  </div>
+</form>

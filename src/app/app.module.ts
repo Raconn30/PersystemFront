@@ -29,9 +29,10 @@ import {ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {FormcontratoComponent } from './Components/Form/formcontrato/formcontrato.component';
 import {FormloginComponent } from './Components/Form/formlogin/formlogin.component';
-import { FormmaterialComponent } from './Components/Form/formmaterial/formmaterial.component';
-import { FormpredioComponent } from './Components/Form/formpredio/formpredio.component';
-
+import {FormmaterialComponent } from './Components/Form/formmaterial/formmaterial.component';
+import {FormpredioComponent } from './Components/Form/formpredio/formpredio.component';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,10 @@ import { FormpredioComponent } from './Components/Form/formpredio/formpredio.com
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatNativeDateModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

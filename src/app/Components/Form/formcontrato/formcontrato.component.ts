@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators,Validator } from '@angular/forms';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,7 +9,10 @@ import Swal from 'sweetalert2';
 })
 export class FormcontratoComponent {
 
-  contratoForm = new FormGroup({
+  constructor(private ft: FormBuilder) {
+  }
+
+  /* contratoForm = new FormGroup({
     CodContrato: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(11)])),
     FechaInicioContr: new FormControl(null, Validators.required),
     FechaFinalContr: new FormControl(null, Validators.required),
@@ -17,16 +20,24 @@ export class FormcontratoComponent {
     NitPredio: new FormControl(null, Validators.compose([Validators.required, Validators.maxLength(11)])),
     PrecioContrato: new FormControl(null, Validators.compose([Validators.required ,Validators.maxLength(11)])),
 
+  }); */
+
+  contratoForm = this.ft.group({
+    CodContrato: [null, Validators.compose([Validators.required, Validators.maxLength(11)])],
+    FechaInicioContr:[null,Validators.required],
+    FechaFinalContr: [null,Validators.required],
+    CodSer: [null, Validators.compose([Validators.required, Validators.maxLength(11)])],
+    NitPredio: [null, Validators.compose([Validators.required, Validators.maxLength(11)])],
+    PrecioContrato: [null, Validators.compose([Validators.required, Validators.maxLength(11)])],
   });
 
-  constructor(private ft: FormBuilder) {
-  }
 
-  onSubmit(): void {
+  onSubmit(): void{
     Swal.fire(
       'Buen trabajo!',
-      'diste click al boton',
+      'Formulario enviado!',
+      'success'
     )
-  }
+   }
 
 }

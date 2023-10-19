@@ -4,6 +4,8 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { FormmaterialComponent } from '../Form/formmaterial/formmaterial.component';
 
 @Component({
   selector: 'app-material',
@@ -17,13 +19,21 @@ export class MaterialComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public api: RestService) {
+  constructor(public api: RestService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
+  }
+
+  openDialog() {
+    this.dialog.open(FormmaterialComponent, {
+      width: '50%'
+    }
+    ); 
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.paginator._intl.itemsPerPageLabel = 'Registros por página';
   }
 
   ngOnInit(): void {

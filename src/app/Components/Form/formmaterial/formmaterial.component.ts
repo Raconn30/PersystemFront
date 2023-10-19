@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 })
 export class FormmaterialComponent {
 
+  /*
   materialForm = new FormGroup({
     CodMat: new FormControl(null),
     NomMat: new FormControl(null),
@@ -18,15 +19,28 @@ export class FormmaterialComponent {
     NumUnidades: new FormControl(null)
 
   });
+  */
 
   constructor(private ft: FormBuilder) {
   }
 
-  onSubmit(): void {
+  materialForm = this.ft.group({
+    CodMat: [null, Validators.compose([Validators.required, Validators.maxLength(11)])],
+    NomMat: [null, Validators.compose([Validators.required, Validators.maxLength(25)])],
+    TipoMat: [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
+    PrecioMat:[null, Validators.required],
+    DesMat: [null, Validators.compose([Validators.required, Validators.maxLength(100)])],
+    NumUnidades: [null, Validators.compose([Validators.required, Validators.maxLength(15)])],
+    FechaEntrada: [null, Validators.required],
+    FechaSalida: [null, Validators.required]
+  })
+
+  onSubmit(): void{
     Swal.fire(
       'Buen trabajo!',
-      'diste click al boton',
+      'Formulario enviado!',
+      'success'
     )
-  }
+   }
 
 }

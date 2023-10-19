@@ -4,26 +4,36 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormcontratoComponent } from '../Form/formcontrato/formcontrato.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contrato',
   templateUrl: './contrato.component.html',
   styleUrls: ['./contrato.component.css']
 })
-export class ContratoComponent implements OnInit, AfterViewInit{
+export class ContratoComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public api: RestService) {
+  constructor(public api: RestService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
+  }
+  
+  openDialog() {
+    this.dialog.open(FormcontratoComponent, {
+      width: '50%'
+    }
+    );
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.paginator._intl.itemsPerPageLabel = 'Registros por página';
   }
 
   ngOnInit(): void {
@@ -70,26 +80,26 @@ export class ContratoComponent implements OnInit, AfterViewInit{
     }
   }
 
-  public post(){
+  public post() {
     this.api.Post("Contrato", {
-    codContrato: "122222",
-    fechaInicioContr: Date,
-    fechaFinalContr: Date,
-    codSer: "2305",
-    nitPredio: "8001475234",
-    precioContrato: 1.0,
-    codSerNavigation: Object,
-    nitPredioNavigation: Object,
+      codContrato: "122222",
+      fechaInicioContr: Date,
+      fechaFinalContr: Date,
+      codSer: "2305",
+      nitPredio: "8001475234",
+      precioContrato: 1.0,
+      codSerNavigation: Object,
+      nitPredioNavigation: Object,
     });
   }
 
-  public put(){
+  public put() {
     this.api.Put("contrato", {
-    codContrato: "",
+      codContrato: "",
     });
   }
 
-  public delete(){
+  public delete() {
     this.api.Delete("contrato", {
       codContrato: "",
     });

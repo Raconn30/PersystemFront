@@ -5,6 +5,8 @@ import { AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormloginComponent } from '../Form/formlogin/formlogin.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +20,20 @@ export class LoginComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public api: RestService) {
+  constructor(public api: RestService, public dialog: MatDialog) {
     this.dataSource = new MatTableDataSource();
+  }
+
+  openDialog() {
+    this.dialog.open(FormloginComponent,{
+      width: '35%'
+    }); 
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.paginator._intl.itemsPerPageLabel = 'Registros por página';
   }
 
   ngOnInit(): void {
