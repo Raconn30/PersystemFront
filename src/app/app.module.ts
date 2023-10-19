@@ -19,7 +19,20 @@ import { RepresentanteComponent } from './Components/representante/representante
 import { ServicioComponent } from './Components/servicio/servicio.component';
 import { TrabajadorComponent } from './Components/trabajador/trabajador.component';
 import { LoginComponent } from './Components/login/login.component';
-
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import Swal from 'sweetalert2';
+import { FormproveedorComponent } from './Components/Forms/formproveedor/formproveedor.component';
+import { FormservicioComponent } from './Components/Forms/formservicio/formservicio.component';
+import { FormrepresentanteComponent } from './Components/Forms/formrepresentante/formrepresentante.component';
+import { FormtrabajadorComponent } from './Components/Forms/formtrabajador/formtrabajador.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +45,22 @@ import { LoginComponent } from './Components/login/login.component';
     RepresentanteComponent,
     ServicioComponent,
     TrabajadorComponent,
-    LoginComponent
+    LoginComponent,
+    FormproveedorComponent,
+    FormservicioComponent,
+    FormrepresentanteComponent,
+    FormtrabajadorComponent
   ],
   imports: [
+    MatDialogModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatCardModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

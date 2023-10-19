@@ -1,0 +1,96 @@
+<form [formGroup]="servicioForm" (ngSubmit)="onSubmit()">
+  <div class="Formulario">
+  <mat-card class="Formservicio-card">
+    <mat-card-header>
+      <mat-card-title class="titu">Servicio</mat-card-title>
+      <mat-card-subtitle>Datos</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="principal">
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Codigo de servicio" formControlName="cod_ser" >
+              <mat-error *ngIf="servicioForm.controls['cod_ser'].hasError('required')"><Strong>El codigo del servicio es requerido</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['cod_ser'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="pareja">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Precio del servicio" formControlName="precio_ser" >
+              <mat-error *ngIf="servicioForm.controls['precio_ser'].hasError('required')"><Strong>El precio es requerido</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Duracion servicio " formControlName="duracion_ser" >
+              <mat-error *ngIf="servicioForm.controls['duracion_ser'].hasError('required')"><Strong>Indica la duracion es requerido</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['duracion_ser'].hasError('maxlength')"><Strong>Maximo 50 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="pareja">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre del servicio " formControlName="nom_ser" >
+              <mat-error *ngIf="servicioForm.controls['nom_ser'].hasError('required')"><Strong>El nombre del servicio es requerido</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['nom_ser'].hasError('maxlength')"><Strong>Maximo 20 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Tipo de servicio" formControlName="tipo_ser" >
+              <mat-error *ngIf="servicioForm.controls['tipo_ser'].hasError('required')"><Strong>El tipo de servicion es requerido</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['tipo_ser'].hasError('maxlength')"><Strong>Maximo 35 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="pareja">
+      <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Predio del servicio" formControlName="nit_predio" >
+              <mat-error *ngIf="servicioForm.controls['nit_predio'].hasError('required')"><Strong>La identificacion del predio es requerida</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['nit_predio'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Material para el servicio" formControlName="cod_mat" >
+              <mat-error *ngIf="servicioForm.controls['cod_mat'].hasError('required')"><Strong>El codigo del material es requerido</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['cod_mat'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+
+              <mat-label>Descripcion Del Servicio</mat-label>
+              <textarea matInput formControlName="des_ser" ></textarea>
+              <mat-error *ngIf="servicioForm.controls['des_ser'].hasError('required')"><Strong>La descripcion del servicio es requerida</Strong></mat-error>
+              <mat-error *ngIf="servicioForm.controls['des_ser'].hasError('maxlength')"><Strong>Maximo 200 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="segundo">
+      <button mat-button class="button"  type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</form>

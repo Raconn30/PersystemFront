@@ -32,11 +32,11 @@ export class ContratoComponent implements OnInit{
     });
   }
 
-  public put(){
-    this.api.Put("contrato", {
-    codContrato: "",
-    });
-  }
+  // public put(){
+  //   this.api.Put("contrato", {
+  //   codContrato: "",
+  //   });
+  // }
 
   public delete(){
     this.api.Delete("contrato", {

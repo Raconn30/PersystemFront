@@ -1,0 +1,85 @@
+<form [formGroup]="representanteForm" (ngSubmit)="onSubmit()">
+  <div class="Formulario">
+  <mat-card class="Formrepresentante-card">
+
+    <mat-card-header>
+      <mat-card-title class="titu">Representante</mat-card-title>
+      <mat-card-subtitle class="Sub">Datos</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content class="principal">
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Documento" formControlName="documento_repre" >
+              <mat-error *ngIf="representanteForm.controls['documento_repre'].hasError('required')"><Strong>El documento es requerido</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['documento_repre'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="Nomape">
+        <div class="row1">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre" formControlName="nom_repre" >
+              <mat-error *ngIf="representanteForm.controls['nom_repre'].hasError('required')"><Strong>El nombre es requerido</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['nom_repre'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Apellido" formControlName="apell_repre" >
+              <mat-error *ngIf="representanteForm.controls['apell_repre'].hasError('required')"><Strong>El apellido es requerido</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['apell_repre'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="Nomape">
+        <div class="row1">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Telefono" formControlName="tel_repre" >
+              <mat-error *ngIf="representanteForm.controls['tel_repre'].hasError('required')"><Strong>El telefono es requerido</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['tel_repre'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Correo" formControlName="correo_repre" >
+              <mat-error *ngIf="representanteForm.controls['correo_repre'].hasError('email')"><Strong>esto no es un email</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['correo_repre'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Dia" formControlName="dia_atencion" >
+              <mat-error *ngIf="representanteForm.controls['dia_atencion'].hasError('required')"><Strong>dia de atencion es requerido</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['dia_atencion'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Hora" formControlName="hora_atencion" >
+              <mat-error *ngIf="representanteForm.controls['hora_atencion'].hasError('required')"><Strong>La hora de atencion es requerida</Strong></mat-error>
+              <mat-error *ngIf="representanteForm.controls['hora_atencion'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="segundo">
+      <button mat-button class="button" type="submit">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</form>
