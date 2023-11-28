@@ -76,28 +76,33 @@
           </div>
         </div>
 
-        <div class="row" >
-          <div class="col">
+        <!-- <div class="row" >
+
             <mat-form-field class="full-width">
               <input matInput placeholder="Numero Contrato" formControlName="cod_contrato" >
               <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('required')"><Strong>El numero de contrato es requerido</Strong></mat-error>
               <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
             </mat-form-field>
           </div>
-       </div>
+       </div> -->
        <div class="row" >
         <div class="col">
-          <mat-form-field class="full-width">
-            <input matInput placeholder="Numero de servicio" formControlName="cod_ser" >
-            <mat-error *ngIf="trabajadorForm.controls['cod_ser'].hasError('required')"><Strong>El Numero de servicion es requerido</Strong></mat-error>
-            <mat-error *ngIf="trabajadorForm.controls['cod_ser'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
-          </mat-form-field>
-        </div>
-     </div>
+       <mat-form-field>
+        <mat-select placeholder={{ser}} formControlName="cod_contrato" (selectionChange)="cambio()">
+          <mat-option *ngFor="let contrato of contrato1" [value]="contrato.codigo">{{contrato.precio}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('required')"><Strong>El servicio es
+            requerido</Strong></mat-error>
+            <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('maxlength')"><Strong>Maximo 11 caracteres
+            </Strong>
+          </mat-error>
+      </mat-form-field>
+    </div>
+    </div>
     </div>
     </mat-card-content>
     <mat-card-actions class="segundo">
-      <button mat-button class="button" type="submit">Enviar</button>
+      <button mat-button class="button" type="submit">{{title}}</button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -1,24 +1,32 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/Services/rest.service';
-import { FormrepresentanteComponent } from '../Forms/formrepresentante/formrepresentante.component';
+import { FormrepresentanteComponent } from '../Form/formrepresentante/formrepresentante.component';
+import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+import { FormsService } from 'src/app/Services/forms.service';
+
 
 @Component({
   selector: 'app-representante',
   templateUrl: './representante.component.html',
   styleUrls: ['./representante.component.css']
 })
-export class RepresentanteComponent implements OnInit{
+export class RepresentanteComponent implements OnInit, AfterViewInit{
 
   displayedColumns: string[] = [];
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  spinner: boolean = false;
 
-  constructor(public api: RestService,public dialog: MatDialog ){
+
+
+constructor(public FormsService:FormsService,public api: RestService,public dialog: MatDialog,public spinnerService: NgxSpinnerService){
   this.dataSource = new MatTableDataSource();
  }
 
@@ -32,16 +40,47 @@ this.get();
 }
 
 public get(){
-this.api.Get("representante").then((res)=>{
+  this.spinnerService.show();
 
-  for (let index = 0; index < res.length ; index++){
-    this.loadTable([res[index]]);
-  }
+  if(this.spinnerService.show()){
+    this.spinner=true;
 
-  this.dataSource.data = res;
+   }else if(this.spinnerService.hide()){
+    this.spinner=false;
+   }
 
-  console.log(res);
-})
+  this.api.Get("representante").then((res)=>{
+
+    for (let index = 0; index < res.length ; index++){
+      this.loadTable([res[index]]);
+
+
+    }
+
+
+    // Asignar el valor de la promesa al atributo dataSource.data
+    this.dataSource.data = res;
+
+    console.log(res);
+    // Ocultar el spinner después de recibir la respuesta
+
+     this.spinnerService.hide();
+
+     this.spinner=false
+     setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.paginator._intl.itemsPerPageLabel = 'Registros por página';
+    });
+
+});
+}
+showSpinner() {
+  this.spinnerService.show();
+  setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      // this.spinner.hide();
+  }, 5000);
 }
 loadTable(data: any[]) {
 this.displayedColumns = [];
@@ -52,11 +91,38 @@ for (let column in data[0]) {
 this.displayedColumns.push("Acciones")
 }
 }
-editaRegistro(){
-alert("Edite informacion");
+editaRegistro(object: any){
+  this.FormsService.title='Editar';
+  console.log(object)
+  const dialogRef = this.dialog.open(FormrepresentanteComponent,{
+    width:'40%'
+  });
+  this.FormsService.representante=(object);
 }
-EliminarRegistro(){
-alert("Elimine el registro");
+EliminarRegistro(id){
+  Swal.fire({
+    title: '¡Estas seguro?',
+    text: "Se eliminara de forma permanente",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, Borrar!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.delete(id);
+
+      console.log(id);
+      Swal.fire(
+        'Borrado!',
+        'Ha sido borrado',
+        'success'
+      )
+      window.location.reload();
+    }
+  })
+  this.delete(id);
+  return false;
 }
 
 applyFilter(event: Event) {
@@ -68,6 +134,7 @@ this.dataSource.paginator.firstPage();
 }
 }
 openDialog() {
+  this.FormsService.title='Crear';
   const dialogRef = this.dialog.open(FormrepresentanteComponent,{
     width:'40%'
   });
@@ -87,35 +154,10 @@ this.api.Post("representante",
 );}
 
 
-public put(){
+public delete(id): void{
 
-this.api.Put("representante/",
-{
-  documentoRepre: "string",
-  nomRepre: "string",
-  apellRepre: "string",
-  telRepre: "string",
-  correoRepre: "string",
-  diaAtencion: "string",
-  horaAtencion: "string"}, "1");
-
+  this.api.Delete("Representante/",id
+  );
 }
-
-
-
-public delete(): void{
-
-this.api.Delete("representante/id",
- {
-
-documentoRepre: "string",
-nomRepre: "string",
-apellRepre: "string",
-telRepre: "string",
-correoRepre: "string",
-diaAtencion: "string",
-horaAtencion: "string"});
-
-  }
 
 }

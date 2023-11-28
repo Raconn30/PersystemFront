@@ -4,7 +4,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { RestService } from 'src/app/Services/rest.service';
-import { FormproveedorComponent } from '../Forms/formproveedor/formproveedor.component';
+import { FormproveedorComponent } from '../Form/formproveedor/formproveedor.component';
+import { Subscription } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
+import { FormsService } from 'src/app/Services/forms.service';
 
 @Component({
   selector: 'app-proveedor',
@@ -17,8 +21,11 @@ export class ProveedorComponent implements OnInit{
   dataSource: MatTableDataSource<any>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+  spinner: boolean = false;
+  subscription: Subscription;
 
-  constructor(public api: RestService,public dialog: MatDialog) {
+
+constructor(public FormsService:FormsService,public api: RestService,public dialog: MatDialog,public spinnerService: NgxSpinnerService) {
     this.dataSource = new MatTableDataSource();
 }
 
@@ -33,16 +40,36 @@ ngOnInit(): void {
 }
 
 public get(){
-  this.api.Get("proveedor").then((res)=>{
+  this.spinnerService.show();
 
-    for (let index = 0; index < res.length ; index++){
-      this.loadTable([res[index]]);
-    }
+  if(this.spinnerService.show()){
+    this.spinner=true;
 
-    this.dataSource.data = res;
+   }else if(this.spinnerService.hide()){
+    this.spinner=false;
+   }
 
-    console.log(res);
-})
+ this.spinnerService.show();
+
+ this.api.Get("proveedor").then((res)=>{
+
+   for (let index = 0; index < res.length ; index++){
+     this.loadTable([res[index]]);
+   }
+
+   // Asignar el valor de la promesa al atributo dataSource.data
+   this.dataSource.data = res;
+
+   console.log(res);
+   // Ocultar el spinner después de recibir la respuesta
+   this.spinnerService.hide();
+   this.spinner=false
+   setTimeout(() => {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+    this.paginator._intl.itemsPerPageLabel = 'Registros por página';
+  });
+});
 }
 loadTable(data: any[]) {
 this.displayedColumns = [];
@@ -53,11 +80,39 @@ if (data.length > 0) {
   this.displayedColumns.push("Acciones")
 }
 }
-editaRegistro(){
-alert("Edite informacion");
+editaRegistro(object: any){
+  this.FormsService.title='Editar';
+  console.log(object)
+  const dialogRef = this.dialog.open(FormproveedorComponent,{
+    width:'40%'
+  });
+  this.FormsService.proveedor=(object);
 }
-EliminarRegistro(){
-alert("Elimine el registro");
+
+EliminarRegistro(id){
+  Swal.fire({
+    title: '¡Estas seguro?',
+    text: "Se eliminara de forma permanente",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, Borrar!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.delete(id);
+
+      console.log(id);
+      Swal.fire(
+        'Borrado!',
+        'Ha sido borrado',
+        'success'
+      )
+      window.location.reload();
+    }
+  })
+  this.delete(id);
+  return false;
 }
 applyFilter(event: Event) {
 const filterValue = (event.target as HTMLInputElement).value;
@@ -68,6 +123,7 @@ if (this.dataSource.paginator) {
 }
 }
 openDialog() {
+this.FormsService.title='Crear';
 const dialogRef = this.dialog.open(FormproveedorComponent,{
   width:'40%'
 });
@@ -86,25 +142,10 @@ public post(){
 );}
 
 
-public put(){
+public delete(id): void{
 
-  this.api.Put("proveedor/",
-  {codProveedor: "string",
-  nomProveedor: "string",
-  dirProveedor: "string",
-  telProveedor: "string"}, "1");
-
-}
-
-
-
-public delete(): void{
-
-  this.api.Delete("proveedor/id",
-   { codProveedor: "string",
-   nomProveedor: "string",
-   dirProveedor: "string",
-   telProveedor: "string"});
+  this.api.Delete("Proveedor/",id
+  );
 }
 
 }

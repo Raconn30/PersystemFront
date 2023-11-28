@@ -57,15 +57,9 @@
       </div>
       <div class="pareja">
       <div class="row" >
-          <div class="col">
-            <mat-form-field class="full-width">
-              <input matInput placeholder="Predio del servicio" formControlName="nit_predio" >
-              <mat-error *ngIf="servicioForm.controls['nit_predio'].hasError('required')"><Strong>La identificacion del predio es requerida</Strong></mat-error>
-              <mat-error *ngIf="servicioForm.controls['nit_predio'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
-            </mat-form-field>
-          </div>
-        </div>
 
+        </div>
+<!--
         <div class="row" >
           <div class="col">
             <mat-form-field class="full-width">
@@ -74,6 +68,21 @@
               <mat-error *ngIf="servicioForm.controls['cod_mat'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
             </mat-form-field>
           </div>
+        </div> -->
+        <div class="row" >
+          <div class="col">
+            <mat-form-field>
+              <mat-select placeholder={{Material}} formControlName="cod_mat" (selectionChange)="cambio()">
+                <mat-option *ngFor="let material of material1" [value]="material.codigo">{{material.nombre}}</mat-option>
+              </mat-select>
+              <mat-error *ngIf="servicioForm.controls['cod_mat'].hasError('required')"><Strong>El servicio es
+                  requerido</Strong></mat-error>
+                  <mat-error *ngIf="servicioForm.controls['cod_mat'].hasError('maxlength')"><Strong>Maximo 11 caracteres
+                  </Strong>
+                </mat-error>
+            </mat-form-field>
+          </div>
+
         </div>
       </div>
         <div class="row" >
@@ -89,7 +98,7 @@
         </div>
     </mat-card-content>
     <mat-card-actions class="segundo">
-      <button mat-button class="button"  type="submit">Enviar</button>
+      <button mat-button class="button"  type="submit">{{title}}</button>
     </mat-card-actions>
   </mat-card>
 </div>

@@ -29,10 +29,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { FormproveedorComponent } from './Components/Forms/formproveedor/formproveedor.component';
-import { FormservicioComponent } from './Components/Forms/formservicio/formservicio.component';
-import { FormrepresentanteComponent } from './Components/Forms/formrepresentante/formrepresentante.component';
-import { FormtrabajadorComponent } from './Components/Forms/formtrabajador/formtrabajador.component';
+import { FormproveedorComponent } from './Components/Form/formproveedor/formproveedor.component';
+import { FormservicioComponent } from './Components/Form/formservicio/formservicio.component';
+import { FormrepresentanteComponent } from './Components/Form/formrepresentante/formrepresentante.component';
+import { FormtrabajadorComponent } from './Components/Form/formtrabajador/formtrabajador.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Observable } from 'rxjs';
+import { ObserversModule } from '@angular/cdk/observers';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { MatSelectModule } from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -52,6 +58,10 @@ import { FormtrabajadorComponent } from './Components/Forms/formtrabajador/formt
     FormtrabajadorComponent
   ],
   imports: [
+    MatSelectModule,
+    NgxSpinnerModule,
+    MatProgressSpinnerModule,
+    ObserversModule,
     MatDialogModule,
     MatTableModule,
     MatSortModule,
@@ -73,6 +83,6 @@ import { FormtrabajadorComponent } from './Components/Forms/formtrabajador/formt
     HttpClientModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -30,3 +30,13 @@ td, th {
 color: rgb(202, 51, 51);;
 
 }
+#Center{
+  margin: auto;
+}
+#opcion2{
+  color: rgba(26, 124, 236, 0.801);
+
+  }
+  #tabla{
+    padding: 2%;
+  }

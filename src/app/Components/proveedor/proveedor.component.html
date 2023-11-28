@@ -8,8 +8,11 @@
 
 
 
-  <div class="mat-elevation-z8">
-
+  <div class="mat-elevation-z8" id="tabla">
+    <div *ngIf="spinner">
+      <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "rgb(200,28,92)" type = "square-jelly-box" [fullScreen] = "true"><p style="color: rgb(200,28,92)" > Cargando... </p></ngx-spinner>
+    </div>
+    <div *ngIf ="!spinner">
     <table mat-table [dataSource]="dataSource" matSort>
 
 
@@ -21,8 +24,8 @@
           <div *ngIf="column=='Acciones'">
           <th mat-header-cell *matHeaderCellDef >{{column}}</th>
           <td mat-cell *matCellDef="let element">
-            <a class="opcion" (click)="editaRegistro()"><i class="fa-solid fa-pen-to-square"></i></a>
-            <a class="opcion" id="opcion1" (click)="EliminarRegistro()"><i class="fa-solid fa-delete-left"></i></a>
+            <a class="opcion"id="opcion2" (click)="editaRegistro(element)"><i class="fa-solid fa-pen-to-square"></i></a>
+            <a class="opcion" id="opcion1" (click)="EliminarRegistro(element.codigo)"><i class="fa-solid fa-delete-left"></i></a>
           </td>
 
           </div>
@@ -46,9 +49,10 @@
     </table>
    <div class="boton">
     <div class="boton2">
-      <button mat-raised-button color="primary" (click)="openDialog()">Formulario Auto</button>
+      <button mat-raised-button color="primary" (click)="openDialog()">Formulario Proveedor</button>
   </div>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
   </div>
   </div>
+</div>
 

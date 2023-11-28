@@ -37,7 +37,7 @@
   }
   .pareja2{
     display: grid;
-    grid: repeat(1, 32.9%) / auto-flow 32.3%;
+    grid: repeat(1, 32.9%) / auto-flow 50%;
     justify-content: center;
      margin-bottom: 1%;
   }
