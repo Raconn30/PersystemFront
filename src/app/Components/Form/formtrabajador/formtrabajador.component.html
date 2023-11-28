@@ -1,0 +1,109 @@
+<form [formGroup]="trabajadorForm" (ngSubmit)="onSubmit()">
+  <div class="Formulario">
+  <mat-card class="Formtrabajador-card">
+    <mat-card-header>
+      <mat-card-title class="titu">Trabajador</mat-card-title>
+      <mat-card-subtitle>Datos</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="principal">
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Documento" formControlName="cedula_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['cedula_trab'].hasError('required')"><Strong>El documento es requerido</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['cedula_trab'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="pareja">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Nombre" formControlName="nom_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['nom_trab'].hasError('required')"><Strong>El nombre es requerido</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['nom_trab'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Apellido" formControlName="apell_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['apell_trab'].hasError('required')"><Strong>El apellido es requerido</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['apell_trab'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="pareja">
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Telefono" formControlName="tel_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['tel_trab'].hasError('required')"><Strong>El telefono es requerido</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['tel_trab'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Direccion" formControlName="dir_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['dir_trab'].hasError('required')"><Strong>La direccion es requerida</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['dir_trab'].hasError('maxlength')"><Strong>Maximo 25 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+       </div>
+      </div>
+
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Correo" formControlName="correo_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['correo_trab'].hasError('email')"><Strong>esto no es un email</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['correo_trab'].hasError('maxlength')"><Strong>Maximo 15 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="pareja2">
+        <div class="row" >
+          <div class="col">
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Salraio" formControlName="salario_trab" >
+              <mat-error *ngIf="trabajadorForm.controls['salario_trab'].hasError('required')"><Strong>El salario es requerido</Strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- <div class="row" >
+
+            <mat-form-field class="full-width">
+              <input matInput placeholder="Numero Contrato" formControlName="cod_contrato" >
+              <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('required')"><Strong>El numero de contrato es requerido</Strong></mat-error>
+              <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('maxlength')"><Strong>Maximo 11 caracteres</Strong></mat-error>
+            </mat-form-field>
+          </div>
+       </div> -->
+       <div class="row" >
+        <div class="col">
+       <mat-form-field>
+        <mat-select placeholder={{ser}} formControlName="cod_contrato" (selectionChange)="cambio()">
+          <mat-option *ngFor="let contrato of contrato1" [value]="contrato.codigo">{{contrato.precio}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('required')"><Strong>El servicio es
+            requerido</Strong></mat-error>
+            <mat-error *ngIf="trabajadorForm.controls['cod_contrato'].hasError('maxlength')"><Strong>Maximo 11 caracteres
+            </Strong>
+          </mat-error>
+      </mat-form-field>
+    </div>
+    </div>
+    </div>
+    </mat-card-content>
+    <mat-card-actions class="segundo">
+      <button mat-button class="button" type="submit">{{title}}</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</form>

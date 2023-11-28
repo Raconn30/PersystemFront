@@ -30,17 +30,17 @@ export class PredioComponent implements OnInit{
     });
   }
 
-  public put(){
-    this.api.Put("predio/id", {
-      nitPredio: "",
-      nomPredio: "",
-      cuartosPredio: "",
-      tipoCuarto: "",
-      dirPredio: "",
-      correoPredio: "",
-      documentoRepre: "",
-    });
-  }
+  // public put(){
+  //   this.api.Put("predio/id", {
+  //     nitPredio: "",
+  //     nomPredio: "",
+  //     cuartosPredio: "",
+  //     tipoCuarto: "",
+  //     dirPredio: "",
+  //     correoPredio: "",
+  //     documentoRepre: "",
+  //   });
+  // }
 
   public delete(): void{
     this.api.Delete("predio/id", {
